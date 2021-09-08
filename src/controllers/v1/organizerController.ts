@@ -1,9 +1,9 @@
 import { Request, Response } from 'express';
 
 /**
- * POST /v1/voter
- * Expects voter details
- * Return a token on successful login
+ * POST /v1/organizer
+ * Expects organizer details
+ * Return an organizer on successful creation
  * @param {Request} req Request
  * @param {Response} res Response
  */
