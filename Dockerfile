@@ -1,5 +1,5 @@
 
-FROM node:14.16.0 AS builder
+FROM node:14.17.6 AS builder
 WORKDIR /usr/src/app
 COPY . .
 RUN yarn && yarn build

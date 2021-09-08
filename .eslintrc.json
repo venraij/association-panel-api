@@ -16,6 +16,8 @@
         "@typescript-eslint"
     ],
     "rules": {
-        "linebreak-style": 0
+        "linebreak-style": 0,
+        "new-cap": "off",
+        "object-curly-spacing": "off"
     }
 }
