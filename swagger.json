@@ -9,8 +9,9 @@
 		"securitySchemes": {}
 	},
 	"info": {
-		"title": "p2p-voting-api",
+		"title": "voting-api",
 		"version": "0.0.1",
+		"description": "Api for secure and easy voting.",
 		"license": {
 			"name": "MIT"
 		},
