@@ -22,7 +22,7 @@ import { Organizer } from './organizer';
     },
   },
 })
-export class Voter extends Model {
+export class Voter extends Model<Voter> {
     @IsUUID(4)
     @PrimaryKey
     @Column
