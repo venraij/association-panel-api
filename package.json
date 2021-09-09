@@ -1,5 +1,6 @@
 {
-  "name": "p2p-voting-api",
+  "name": "voting-api",
+  "description": "Api for secure and easy voting.",
   "version": "0.0.1",
   "main": "dist/index.js",
   "scripts": {

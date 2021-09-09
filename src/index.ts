@@ -5,10 +5,15 @@ import routes from './routes/router';
 
 const spec = {
   definition: {
-    openapi: '3.0.0',
+    openapi: '3.0.3',
     info: {
-      title: 'P2P Voting Api',
+      title: 'Voting Api',
+      description: 'Api for easy and secure voting.',
       version: '0.0.1',
+      license: {
+        name: 'MIT',
+        url: 'https://opensource.org/licenses/MIT',
+      },
     },
     basePath: '/v1',
     securityDefinitions: {
