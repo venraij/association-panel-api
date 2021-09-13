@@ -1,4 +1,4 @@
-import { Table, Column, Model, PrimaryKey, IsUUID, AllowNull, HasMany } from 'sequelize-typescript';
+import { Table, Column, Model, PrimaryKey, IsUUID, AllowNull, HasMany, Unique } from 'sequelize-typescript';
 import { Voter } from './voter';
 
 @Table({
@@ -22,6 +22,11 @@ export class Organizer extends Model<Organizer> {
   @AllowNull(false)
   @Column
   name: string
+
+  @AllowNull(false)
+  @Unique(true)
+  @Column
+  email: string
 
   @HasMany(() => Voter)
   voters: Voter[]

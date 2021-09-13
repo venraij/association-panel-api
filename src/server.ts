@@ -3,9 +3,18 @@ import swaggerUi from 'swagger-ui-express';
 import swaggerJSDoc from 'swagger-jsdoc';
 import routes from './routes/router';
 import { Sequelize } from 'sequelize-typescript';
-import { Voter } from './models/voter';
-import { Organizer } from './models/organizer';
+import { Voter } from './db/models/voter';
+import { Organizer } from './db/models/organizer';
 import http from 'http';
+import helmet from 'helmet';
+
+const app: Application = express();
+const port = parseInt(process.env.PORT) || 8080; // default port to listen
+const host = process.env.HOST || 'localhost';
+
+app.use(express.json());
+app.use(helmet());
+app.disable('x-powered-by');
 
 const spec = {
   definition: {
@@ -33,13 +42,7 @@ const spec = {
   apis: ['**/*.ts'], // files containing annotations as above
 };
 
-const app: Application = express();
-const port = parseInt(process.env.PORT) || 8080; // default port to listen
-const host = process.env.HOST || 'localhost';
 const swaggerSpec = swaggerJSDoc(spec);
-
-app.use(express.json());
-app.disable('x-powered-by');
 
 app.use(
     '/docs',
@@ -62,8 +65,8 @@ export async function start(sequelize: Sequelize): Promise<void> {
       Voter,
       Organizer,
     ]);
-
     await sequelize.sync();
+
     return new Promise((resolve) => {
       server.listen(port, host.toString(), () => {
         console.log(`Server is running on http://${host}:${port}/docs`);

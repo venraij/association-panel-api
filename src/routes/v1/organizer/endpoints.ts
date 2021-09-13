@@ -8,22 +8,25 @@ export const OrganizerRouter = Router();
  *
  * /v1/organizer:
  *   post:
- *     description: Create an organizer
+ *     summary: Create an organizer
  *     produces:
  *       - application/json
  *     tags:
  *       - Organizer
- *     parameters:
- *     -  name: body
- *        in: body
+ *     requestBody:
  *        required: true
- *        schema:
- *          type: object
- *          required: [email]
- *          properties:
- *            email:
- *              type: string
- *              description: The email
+ *        content:
+ *          application/json:
+ *            schema:
+ *              type: object
+ *              required: [email, name]
+ *              properties:
+ *                email:
+ *                  type: string
+ *                  description: The email
+ *                name:
+ *                  type: string
+ *                  description: The name
  *     responses:
  *       200:
  *         description: Created an organizer. Returning organizer.
@@ -31,3 +34,4 @@ export const OrganizerRouter = Router();
  *          description: An error occurred
  */
 OrganizerRouter.post('/', organizerController.create);
+
