@@ -16,8 +16,8 @@ app.use(express.json());
 app.use(helmet());
 app.disable('x-powered-by');
 
-const spec = {
-  definition: {
+const spec: swaggerJSDoc.Options = {
+  swaggerDefinition: {
     openapi: '3.0.3',
     info: {
       title: 'Voting Api',
@@ -29,15 +29,20 @@ const spec = {
       },
     },
     basePath: '/v1',
-    securityDefinitions: {
-      Bearer: {
-        type: 'apiKey',
-        name: 'authorization',
-        in: 'header',
-        scheme: 'bearer',
-        bearerFormat: 'JWT',
+    components: {
+      securitySchemes: {
+        bearerAuth: {
+          type: 'http',
+          in: 'header',
+          name: 'authorization',
+          scheme: 'bearer',
+          bearerFormat: 'JWT',
+        },
       },
     },
+    security: [{
+      bearerAuth: [],
+    }],
   },
   apis: ['**/*.ts'], // files containing annotations as above
 };
@@ -52,6 +57,7 @@ app.use(
         url: 'swagger.json',
         persistAuthorization: true,
       },
+      explorer: true,
     }),
 );
 

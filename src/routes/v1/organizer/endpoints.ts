@@ -1,4 +1,5 @@
 import { Router } from 'express';
+import jwtValidation from '../../../middleware/jwtValidation';
 import * as organizerController from '../../../controllers/v1/organizerController';
 
 export const OrganizerRouter = Router();
@@ -8,6 +9,8 @@ export const OrganizerRouter = Router();
  *
  * /v1/organizer:
  *   post:
+ *     security:
+ *       - bearerAuth: []
  *     summary: Create an organizer
  *     produces:
  *       - application/json
@@ -33,5 +36,5 @@ export const OrganizerRouter = Router();
  *       400:
  *          description: An error occurred
  */
-OrganizerRouter.post('/', organizerController.create);
+OrganizerRouter.post('/', jwtValidation, organizerController.create);
 

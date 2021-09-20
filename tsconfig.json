@@ -2,8 +2,8 @@
     "compilerOptions": {
         "module": "commonjs",
         "esModuleInterop": true,
-        "target": "es6",
-        "noImplicitAny": true,
+        "target": "es2020",
+        "noImplicitAny": false,
         "moduleResolution": "node",
         "sourceMap": true,
         "outDir": "dist",
@@ -18,5 +18,5 @@
     },
     "include": [
         "src/**/*"
-    ]
+    ],
 }
