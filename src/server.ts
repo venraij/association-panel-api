@@ -7,6 +7,7 @@ import { Voter } from './db/models/voter';
 import { Organizer } from './db/models/organizer';
 import http from 'http';
 import helmet from 'helmet';
+import { migrator } from './utils/umzug';
 
 const app: Application = express();
 const port = parseInt(process.env.PORT) || 8080; // default port to listen
@@ -71,7 +72,8 @@ export async function start(sequelize: Sequelize): Promise<void> {
       Voter,
       Organizer,
     ]);
-    await sequelize.sync();
+
+    await migrator.up();
 
     return new Promise((resolve) => {
       server.listen(port, host.toString(), () => {
