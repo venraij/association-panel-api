@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 
 /**
- * POST /v1/voter
+ * POST /v1/user
  * Expects voter details
  * Return a token on successful login
  * @param {Request} req Request

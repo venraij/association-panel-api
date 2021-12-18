@@ -4,13 +4,45 @@ import { Migration } from '../../utils/umzug';
 export const up: Migration = async ({ context: queryInterface }) => {
   await queryInterface.createTable('users', {
     id: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false,
       primaryKey: true,
     },
-    name: {
+    email: {
       type: DataTypes.STRING,
       allowNull: false,
+    },
+    firstName: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    lastName: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    studentId: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    passwordHash: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    confirmedEmail: {
+      type: DataTypes.BOOLEAN,
+      allowNull: false,
+    },
+    createdAt: {
+      type: DataTypes.DATE,
+      allowNull: false,
+    },
+    updatedAt: {
+      type: DataTypes.DATE,
+      allowNull: false,
+    },
+    deletedAt: {
+      type: DataTypes.DATE,
+      allowNull: true,
     },
   });
 };

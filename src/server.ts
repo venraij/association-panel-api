@@ -3,11 +3,10 @@ import swaggerUi from 'swagger-ui-express';
 import swaggerJSDoc from 'swagger-jsdoc';
 import routes from './routes/router';
 import { Sequelize } from 'sequelize-typescript';
-import { Voter } from './db/models/voter';
-import { Organizer } from './db/models/organizer';
 import http from 'http';
 import helmet from 'helmet';
 import { migrator } from './utils/umzug';
+import { User } from './db/models/user.js';
 
 const app: Application = express();
 const port = parseInt(process.env.PORT) || 8080; // default port to listen
@@ -69,8 +68,7 @@ export async function start(sequelize: Sequelize): Promise<void> {
     const server = http.createServer(app);
 
     sequelize.addModels([
-      Voter,
-      Organizer,
+      User,
     ]);
 
     await migrator.up();

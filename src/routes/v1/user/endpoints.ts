@@ -1,7 +1,7 @@
 import { Router } from 'express';
-import * as voterController from '../../../controllers/v1/voterController';
+import * as userController from '../../../controllers/v1/userController';
 
-export const VoterRouter = Router();
+export const UserRouter = Router();
 
 /**
  * @swagger
@@ -30,4 +30,4 @@ export const VoterRouter = Router();
  *       400:
  *          description: An error occurred
  */
-VoterRouter.post('/', voterController.create);
+UserRouter.post('/', userController.create);
