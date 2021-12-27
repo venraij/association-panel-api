@@ -11,6 +11,7 @@ import { User } from './db/models/user.js';
 const app: Application = express();
 const port = parseInt(process.env.PORT) || 8080; // default port to listen
 const host = process.env.HOST || 'localhost';
+export const privateKey = process.env.privateKey || 'FAC79F6CDAF8EE1C33EE98FEF72C2';
 
 app.use(express.json());
 app.use(helmet());

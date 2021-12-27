@@ -6,27 +6,31 @@ export const UserRouter = Router();
 /**
  * @swagger
  *
- * /v1/voter:
+ * /v1/user:
  *   post:
- *     description: Create a voter
- *     produces:
+ *     description: Creates a new user
+ *     consumes:
  *       - application/json
  *     tags:
- *       - Voter
- *     parameters:
- *     -  name: body
- *        in: body
- *        required: true
- *        schema:
- *          type: object
- *          required: [email]
- *          properties:
- *            email:
- *              type: string
- *              description: The email
+ *       - User
+ *     requestBody:
+ *       content:
+ *         application/json:
+ *            schema:
+ *              type: object
+ *              required: [email, password]
+ *              properties:
+ *                email:
+ *                  type: string
+ *                  description: The email
+ *                password:
+ *                  type: string
+ *                  description: The password
+ *     produces:
+ *       - application/json
  *     responses:
- *       200:
- *         description: Created a voter. Returning JWT.
+ *       201:
+ *         description: Created a user. Returning JWT.
  *       400:
  *          description: An error occurred
  */

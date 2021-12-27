@@ -15,8 +15,11 @@ import { AllowNull, Column, CreatedAt, DeletedAt, IsUUID, Model, PrimaryKey, Tab
     jwt: {
       attributes: [
         'id',
-        'name',
-        'type',
+        'email',
+        'firstName',
+        'lastName',
+        'studentId',
+        'createdAt',
       ],
     },
   },
@@ -35,15 +38,15 @@ export class User extends Model {
     @Column
       passwordHash: string;
 
-    @AllowNull(false)
+    @AllowNull(true)
     @Column
       firstName: string;
 
-    @AllowNull(false)
+    @AllowNull(true)
     @Column
       lastName: string;
 
-    @AllowNull(false)
+    @AllowNull(true)
     @Column
       studentId: string;
 

@@ -9,7 +9,7 @@
 		"securitySchemes": {}
 	},
 	"info": {
-		"title": "voting-api",
+		"title": "association-panel-api",
 		"version": "0.0.1",
 		"description": "Api for secure and easy voting.",
 		"license": {

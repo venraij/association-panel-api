@@ -11,9 +11,8 @@ export default function(req: Request, res: Response, next: NextFunction): void {
   }
 
   jwt.verify(token, process.env.TOKEN_SECRET as string, (err: any, user: any) => {
-    console.log(err);
-
     if (err) {
+      console.log(err);
       return res.status(403).send({ error: err });
     }
 

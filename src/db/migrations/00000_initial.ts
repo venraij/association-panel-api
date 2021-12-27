@@ -2,7 +2,7 @@ import { DataTypes } from 'sequelize';
 import { Migration } from '../../utils/umzug';
 
 export const up: Migration = async ({ context: queryInterface }) => {
-  await queryInterface.createTable('users', {
+  await queryInterface.createTable('Users', {
     id: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -14,15 +14,15 @@ export const up: Migration = async ({ context: queryInterface }) => {
     },
     firstName: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     lastName: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     studentId: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     passwordHash: {
       type: DataTypes.STRING,
@@ -48,5 +48,5 @@ export const up: Migration = async ({ context: queryInterface }) => {
 };
 
 export const down: Migration = async ({ context: queryInterface }) => {
-  await queryInterface.dropTable('users');
+  await queryInterface.dropTable('Users');
 };
