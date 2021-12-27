@@ -1,4 +1,4 @@
-import { AllowNull, Column, CreatedAt, DeletedAt, IsUUID, Model, PrimaryKey, Table, UpdatedAt } from 'sequelize-typescript';
+import { AllowNull, Column, CreatedAt, DeletedAt, IsUUID, Model, PrimaryKey, Table, Unique, UpdatedAt } from 'sequelize-typescript';
 
 @Table({
   paranoid: true,
@@ -31,6 +31,7 @@ export class User extends Model {
       id: string;
 
     @AllowNull(false)
+    @Unique
     @Column
       email: string;
 
@@ -47,6 +48,7 @@ export class User extends Model {
       lastName: string;
 
     @AllowNull(true)
+    @Unique
     @Column
       studentId: string;
 
