@@ -42,8 +42,8 @@ export async function create(req: Request, res: Response): Promise<void> {
         };
 
         const token = jwt.sign({
-          data: jwtDecoded,
-        }, privateKey );
+          user: jwtDecoded,
+        }, privateKey, { expiresIn: '24h' });
 
         res.status(201).send({ token: token, user: user });
       });
