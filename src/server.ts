@@ -6,14 +6,15 @@ import { Sequelize } from 'sequelize-typescript';
 import http from 'http';
 import helmet from 'helmet';
 import { migrator } from './utils/umzug';
-import { User } from './db/models/user.js';
+import bodyParser from 'body-parser';
 
 const app: Application = express();
 const port = parseInt(process.env.PORT) || 8080; // default port to listen
 const host = process.env.HOST || 'localhost';
 export const privateKey = process.env.privateKey || 'FAC79F6CDAF8EE1C33EE98FEF72C2';
 
-app.use(express.json());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(helmet());
 app.disable('x-powered-by');
 
@@ -68,9 +69,7 @@ export async function start(sequelize: Sequelize): Promise<void> {
   try {
     const server = http.createServer(app);
 
-    sequelize.addModels([
-      User,
-    ]);
+    sequelize.addModels([__dirname + '/../dist/db/models/*.js']);
 
     await migrator.up();
 

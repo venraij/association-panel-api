@@ -29,9 +29,14 @@ export const up: Migration = async ({ context: queryInterface }) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    confirmedEmail: {
+    verificationCode: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    emailVerified: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
+      defaultValue: false,
     },
     createdAt: {
       type: DataTypes.DATE,

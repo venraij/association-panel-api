@@ -3,7 +3,7 @@ import { sequelizeOptions } from '../sequelize';
 
 export const migrator = new Umzug({
   migrations: {
-    glob: 'src/db/migrations/*.ts',
+    glob: __dirname + '/../../dist/db/migrations/*.js',
   },
   context: sequelizeOptions.getQueryInterface(),
   storage: new SequelizeStorage({

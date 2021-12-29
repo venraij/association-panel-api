@@ -52,9 +52,15 @@ export class User extends Model {
     @Column
       studentId: string;
 
-    @AllowNull(false)
+    @AllowNull(true)
     @Column
-      confirmedEmail: boolean;
+      verificationCode: string;
+
+    @AllowNull(false)
+    @Column({
+      defaultValue: false,
+    })
+      emailVerified: boolean;
 
     @AllowNull(false)
     @CreatedAt
