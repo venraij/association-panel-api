@@ -7,7 +7,7 @@ import http from 'http';
 import helmet from 'helmet';
 import { migrator } from './utils/umzug';
 import bodyParser from 'body-parser';
-import { config } from '../config.js';
+import { config } from './config.js';
 
 const app: Application = express();
 
