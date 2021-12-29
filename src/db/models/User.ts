@@ -1,4 +1,6 @@
-import { AllowNull, Column, CreatedAt, DeletedAt, IsUUID, Model, PrimaryKey, Table, Unique, UpdatedAt } from 'sequelize-typescript';
+import { AllowNull, BelongsToMany, Column, CreatedAt, DeletedAt, HasMany, IsUUID, Model, PrimaryKey, Table, Unique, UpdatedAt } from 'sequelize-typescript';
+import { Association } from './Association.js';
+import { UserAssociation } from './UserAssociation.js';
 
 @Table({
   paranoid: true,
@@ -8,6 +10,8 @@ import { AllowNull, Column, CreatedAt, DeletedAt, IsUUID, Model, PrimaryKey, Tab
         'createdAt',
         'updatedAt',
         'deletedAt',
+        'associations',
+        'userAssociations',
       ],
     },
   },
@@ -20,6 +24,15 @@ import { AllowNull, Column, CreatedAt, DeletedAt, IsUUID, Model, PrimaryKey, Tab
         'lastName',
         'studentId',
         'createdAt',
+      ],
+    },
+    userList: {
+      attributes: [
+        'id',
+        'email',
+        'firstName',
+        'lastName',
+        'studentId',
       ],
     },
   },
@@ -80,4 +93,10 @@ export class User extends Model {
     @DeletedAt
     @Column
       deletedAt: Date;
+
+    @BelongsToMany(() => Association, () => UserAssociation)
+      associations: Association[];
+
+    @HasMany(() => UserAssociation)
+      userAssociations: UserAssociation[];
 }
