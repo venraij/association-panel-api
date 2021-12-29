@@ -38,6 +38,10 @@ export const up: Migration = async ({ context: queryInterface }) => {
       allowNull: false,
       defaultValue: false,
     },
+    lastSuccessfulLogin: {
+      type: DataTypes.DATE,
+      allowNull: true,
+    },
     createdAt: {
       type: DataTypes.DATE,
       allowNull: false,

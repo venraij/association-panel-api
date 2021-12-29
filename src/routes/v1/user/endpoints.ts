@@ -58,7 +58,7 @@ UserRouter.post('/', userController.register);
  *                  description: The email
  *                verificationCode:
  *                  type: string
- *                  description: The password
+ *                  description: The verification code
  *     produces:
  *       - application/json
  *     responses:

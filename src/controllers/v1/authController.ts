@@ -55,7 +55,10 @@ export async function login(req: Request, res: Response): Promise<void> {
         user: userData,
       }, privateKey, { expiresIn: '2h' });
 
-      res.status(201).send(token);
+      user.lastSuccessfulLogin = new Date();
+      await user.save();
+
+      res.status(200).send(token);
     } catch (err) {
       console.error(err);
       res.status(500).send({ error: err});

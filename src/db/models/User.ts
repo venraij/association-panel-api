@@ -62,6 +62,10 @@ export class User extends Model {
     })
       emailVerified: boolean;
 
+    @AllowNull(true)
+    @Column
+      lastSuccessfulLogin: Date;
+
     @AllowNull(false)
     @CreatedAt
     @Column
