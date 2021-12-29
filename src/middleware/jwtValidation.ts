@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import * as jwt from 'jsonwebtoken';
-import { config } from '../../config.js';
+import { config } from '../config.js';
 
 export default function(req: Request, res: Response, next: NextFunction): void {
   const authHeader = req.headers.authorization;

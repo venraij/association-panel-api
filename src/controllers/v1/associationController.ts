@@ -40,12 +40,12 @@ export async function create(req: Request, res: Response): Promise<void> {
           name,
           websiteUrl,
           logoUrl,
-        });
+        }, { transaction });
 
         await UserAssociation.create({
           userId,
           associationId: association.id,
-        });
+        }, { transaction });
 
         res.status(201).send(association);
       });
