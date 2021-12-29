@@ -4,7 +4,6 @@ import * as jwt from 'jsonwebtoken';
 import { v4 } from 'uuid';
 import bcrypt from 'bcrypt';
 import { privateKey } from '../../server.js';
-import { IJwtDecoded } from '../../interfaces/jwtDecoded.interface.js';
 
 /**
  * POST /v1/user
@@ -32,7 +31,7 @@ export async function create(req: Request, res: Response): Promise<void> {
           confirmedEmail: false,
         });
 
-        const jwtDecoded: IJwtDecoded = {
+        const userData = {
           id: user.id,
           email: user.email,
           firstName: user.firstName,
@@ -42,7 +41,7 @@ export async function create(req: Request, res: Response): Promise<void> {
         };
 
         const token = jwt.sign({
-          user: jwtDecoded,
+          user: userData,
         }, privateKey, { expiresIn: '24h' });
 
         res.status(201).send({ token: token, user: user });
