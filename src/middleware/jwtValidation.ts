@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from 'express';
 import * as jwt from 'jsonwebtoken';
-import { privateKey } from '../server.js';
+import { config } from '../../config.js';
 
 export default function(req: Request, res: Response, next: NextFunction): void {
   const authHeader = req.headers.authorization;
@@ -11,7 +11,7 @@ export default function(req: Request, res: Response, next: NextFunction): void {
     return;
   }
 
-  jwt.verify(token, privateKey, (err: any, user: any) => {
+  jwt.verify(token, config.privateKey, (err: any, user: any) => {
     if (err) {
       console.log(err);
       return res.status(403).send({ error: err });
