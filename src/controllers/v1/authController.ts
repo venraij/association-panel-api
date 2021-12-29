@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import { User } from '../../db/models/User.js';
 import bcrypt from 'bcrypt';
 import * as jwt from 'jsonwebtoken';
-import { privateKey } from '../../server.js';
+import { config } from '../../config';
 
 /**
  * POST /v1/auth/login
