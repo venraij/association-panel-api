@@ -73,7 +73,7 @@ export async function start(sequelize: Sequelize): Promise<void> {
 
     return new Promise((resolve) => {
       server.listen(config.port, config.host.toString(), () => {
-        console.log(`Server is running on http://${host}:${port}/docs`);
+        console.log(`Server is running on http://${config.host}:${config.port}/docs`);
         resolve();
       });
     });

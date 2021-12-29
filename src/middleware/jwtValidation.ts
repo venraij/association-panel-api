@@ -7,11 +7,11 @@ export default function(req: Request, res: Response, next: NextFunction): void {
   const token = authHeader && authHeader.split(' ')[1];
 
   if (token == null) {
-    res.status(401).send({ error: 'Invalid token' });
+    res.status(401).send({ error: 'Missing token' });
     return;
   }
 
-  jwt.verify(token, process.env.TOKEN_SECRET as string, (err: any, user: any) => {
+  jwt.verify(token, config.privateKey, (err: any, user: any) => {
     if (err) {
       console.log(err);
       return res.status(403).send({ error: err });
