@@ -7,11 +7,9 @@ import http from 'http';
 import helmet from 'helmet';
 import { migrator } from './utils/umzug';
 import bodyParser from 'body-parser';
+import { config } from '../config.js';
 
 const app: Application = express();
-const port = parseInt(process.env.PORT) || 8080; // default port to listen
-const host = process.env.HOST || 'localhost';
-export const privateKey = process.env.privateKey || 'FAC79F6CDAF8EE1C33EE98FEF72C2';
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -74,8 +72,8 @@ export async function start(sequelize: Sequelize): Promise<void> {
     await migrator.up();
 
     return new Promise((resolve) => {
-      server.listen(port, host.toString(), () => {
-        console.log(`Server is running on http://${host}:${port}/docs`);
+      server.listen(config.port, config.host.toString(), () => {
+        console.log(`Server is running on http://${config.host}:${config.port}/docs`);
         resolve();
       });
     });

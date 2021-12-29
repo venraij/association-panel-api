@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import { User } from '../../db/models/User.js';
 import bcrypt from 'bcrypt';
 import * as jwt from 'jsonwebtoken';
-import { privateKey } from '../../server.js';
+import { config } from '../../../config.js';
 
 /**
  * POST /v1/auth/login
@@ -53,7 +53,7 @@ export async function login(req: Request, res: Response): Promise<void> {
 
       const token = jwt.sign({
         user: userData,
-      }, privateKey, { expiresIn: '2h' });
+      }, config.privateKey, { expiresIn: '2h' });
 
       user.lastSuccessfulLogin = new Date();
       await user.save();

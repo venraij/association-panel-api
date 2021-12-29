@@ -22,9 +22,10 @@
     "helmet": "^4.6.0",
     "jsonwebtoken": "^8.5.1",
     "nodemon": "^2.0.15",
+    "openapi-types": "^10.0.0",
     "pg": "^8.7.1",
     "reflect-metadata": "^0.1.13",
-    "sequelize": "^6.12.2",
+    "sequelize": "^6.12.4",
     "sequelize-typescript": "^2.1.1",
     "swagger-jsdoc": "^6.1.0",
     "swagger-ui-express": "^4.3.0",
@@ -44,12 +45,11 @@
     "@types/umzug": "^2.3.3",
     "@types/uuid": "^8.3.3",
     "@types/validator": "^13.7.1",
-    "@typescript-eslint/eslint-plugin": "^5.8.0",
-    "@typescript-eslint/parser": "^5.8.0",
+    "@typescript-eslint/eslint-plugin": "^5.8.1",
+    "@typescript-eslint/parser": "^5.8.1",
     "eslint": "^8.5.0",
     "eslint-config-google": "^0.14.0",
-    "eslint-plugin-vue": "^8.2.0",
-    "jshint": "^2.13.1",
+    "jshint": "^2.13.2",
     "ts-node": "^10.4.0"
   }
 }

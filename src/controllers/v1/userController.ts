@@ -37,23 +37,22 @@ export async function register(req: Request, res: Response): Promise<void> {
       }
 
       const verificationCode = crypto.randomBytes(4).toString('hex');
+      const passwordHash = await bcrypt.hash(plainPassword, saltRounds);
 
-      bcrypt.hash(plainPassword, saltRounds, async (err, passwordHash) => {
-        const user = await User.create({
-          id: v4(),
-          email,
-          passwordHash,
-          confirmedEmail: false,
-          studentId,
-          firstName,
-          lastName,
-          verificationCode,
-        });
-
-        console.log('Verification code:', verificationCode);
-
-        res.status(201).send({ email: user.email });
+      const user = await User.create({
+        id: v4(),
+        email,
+        passwordHash,
+        confirmedEmail: false,
+        studentId,
+        firstName,
+        lastName,
+        verificationCode,
       });
+
+      console.log('Verification code:', verificationCode);
+
+      res.status(201).send({ email: user.email });
     } catch (err) {
       console.error(err);
       res.status(500).send({ error: err});
